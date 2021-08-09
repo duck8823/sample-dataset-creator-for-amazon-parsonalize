@@ -195,11 +195,17 @@ func users(items []models.Item) ([]models.User, error) {
 
 func interactions(users []models.User, items []models.Item) ([]models.Interaction, error) {
 	interactions := make([]models.Interaction, 20000)
-	for i, interaction := range interactions {
-		interaction.UserID = users[rand.Intn(len(users))].UserID
-		interaction.ItemID = items[rand.Intn(len(items))].ItemID
-		interaction.Timestamp = time.Now().Unix()
-		interactions[i] = interaction
+	// ランダム
+	for i := 0; i < 18000; i++ {
+		interactions[i].UserID = users[rand.Intn(len(users))].UserID
+		interactions[i].ItemID = items[rand.Intn(len(items))].ItemID
+		interactions[i].Timestamp = time.Now().Unix()
+	}
+	// 近い数字で回す
+	for i := 18000; i < 20000; i++ {
+		interactions[i].UserID = users[rand.Intn(20)].UserID
+		interactions[i].ItemID = items[rand.Intn(150)].ItemID
+		interactions[i].Timestamp = time.Now().Unix()
 	}
 	return interactions, nil
 }
