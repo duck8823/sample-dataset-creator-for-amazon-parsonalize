@@ -1,6 +1,11 @@
 ## Sample dataset creator for Amazon Personalize
 Amazon Personalize を試すためのサンプルデータ作るくん
 
+## Requirements
+```shell
+npm install
+```
+
 ## Usage
 T.B.W.
 
