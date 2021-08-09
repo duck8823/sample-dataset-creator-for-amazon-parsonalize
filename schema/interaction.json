@@ -15,8 +15,7 @@
       "type": "string"
     },
     "TIMESTAMP": {
-      "type": "string",
-      "format": "date-time"
+      "type": "integer"
     },
     "EVENT_TYPE": {
       "type": "string"

@@ -11,8 +11,7 @@
       "type": "string"
     },
     "CREATION_TIMESTAMP": {
-      "type": "string",
-      "format": "date-time"
+      "type": "integer"
     },
     "CATEGORY": {
       "type": "string",
