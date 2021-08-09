@@ -184,7 +184,7 @@ func users(items []models.Item) ([]models.User, error) {
 		}
 
 		// 0 から 5 個のお気に入り
-		for n := 0; n < rand.Intn(5); n++ {
+		for n := 0; n <= rand.Intn(5); n++ {
 			item := items[rand.Intn(len(items))]
 			user.Bookmarks = append(user.Bookmarks, item.ItemID)
 		}
