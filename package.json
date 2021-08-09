@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "quicktype": "^15.0.260"
+  }
+}
