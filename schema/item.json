@@ -15,7 +15,18 @@
       "format": "date-time"
     },
     "CATEGORY": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "Action",
+        "RolePlaying",
+        "Puzzle",
+        "Simulation",
+        "Adventure",
+        "Shooting",
+        "Supports",
+        "Race",
+        "Music"
+      ]
     }
   }
 }
