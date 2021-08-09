@@ -1,0 +1,21 @@
+{
+  "title": "Item",
+  "description": "コンテンツ",
+  "type": "object",
+  "required": [
+    "ITEM_ID",
+    "CREATION_TIMESTAMP"
+  ],
+  "properties": {
+    "ITEM_ID": {
+      "type": "string"
+    },
+    "CREATION_TIMESTAMP": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "CATEGORY": {
+      "type": "string"
+    }
+  }
+}

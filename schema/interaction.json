@@ -1,0 +1,28 @@
+{
+  "title": "Interaction",
+  "description": "行動データ",
+  "type": "object",
+  "required": [
+    "USER_ID",
+    "ITEM_ID",
+    "TIMESTAMP"
+  ],
+  "properties": {
+    "USER_ID": {
+      "type": "string"
+    },
+    "ITEM_ID": {
+      "type": "string"
+    },
+    "TIMESTAMP": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "EVENT_TYPE": {
+      "type": "string"
+    },
+    "EVENT_VALUE": {
+      "type": "float"
+    }
+  }
+}

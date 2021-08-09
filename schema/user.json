@@ -1,0 +1,19 @@
+{
+  "title": "User",
+  "description": "ユーザー",
+  "type": "object",
+  "required": [
+    "USER_ID"
+  ],
+  "properties": {
+    "id": {
+      "type": "USER_ID"
+    },
+    "BOOKMARKS": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
