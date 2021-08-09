@@ -105,13 +105,13 @@ func items() ([]models.Item, error) {
 		models.Simulation,
 		models.Supports,
 	}
-	rand.Seed(time.Now().UnixNano())
+	rand.Seed(time.Now().Unix())
 
 	items := make([]models.Item, 3000)
 	for i, item := range items {
 		item.ItemID = uuid.New().String()
 		item.Category = &categories[rand.Intn(len(categories))]
-		item.CreationTimestamp = time.Now().UnixNano()
+		item.CreationTimestamp = time.Now().Unix()
 		items[i] = item
 	}
 	return items, nil
@@ -136,7 +136,7 @@ func interactions(users []models.User, items []models.Item) ([]models.Interactio
 	for i, interaction := range interactions {
 		interaction.UserID = users[rand.Intn(len(users))].UserID
 		interaction.ItemID = items[rand.Intn(len(items))].ItemID
-		interaction.Timestamp = time.Now().UnixNano()
+		interaction.Timestamp = time.Now().Unix()
 		interactions[i] = interaction
 	}
 	return interactions, nil
