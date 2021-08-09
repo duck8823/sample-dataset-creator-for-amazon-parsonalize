@@ -60,12 +60,17 @@ func (c CsvCreator) Create() error {
 		return xerrors.Errorf("ファイルの作成に失敗しました: %w", err)
 	}
 	uw := csv.NewWriter(uf)
-	if err := uw.Write([]string{"USER_ID", "BOOKMARKS"}); err != nil {
+	if err := uw.Write([]string{"USER_ID", "PREFECTURES", "BOOKMARKS"}); err != nil {
 		return xerrors.Errorf("ヘッダーの出力に失敗しました: %w", err)
 	}
 	for _, user := range users {
+		prefectures := make([]string, len(user.Prefectures))
+		for i, prefecture := range user.Prefectures {
+			prefectures[i] = string(prefecture)
+		}
 		if err := uw.Write([]string{
 			user.UserID,
+			strings.Join(prefectures, "|"),
 			strings.Join(user.Bookmarks, "|"),
 		}); err != nil {
 			return xerrors.Errorf("ユーザーの出力に失敗しました: %w", err)
@@ -118,9 +123,66 @@ func items() ([]models.Item, error) {
 }
 
 func users(items []models.Item) ([]models.User, error) {
+	prefectures := []models.Prefecture{
+		models.Aichi,
+		models.Akita,
+		models.Aomori,
+		models.Chiba,
+		models.Ehime,
+		models.Fukui,
+		models.Fukuoka,
+		models.Fukushima,
+		models.Gifu,
+		models.Gunma,
+		models.Hiroshima,
+		models.Hokkaido,
+		models.Hyogo,
+		models.Ibaraki,
+		models.Ishikawa,
+		models.Iwate,
+		models.Kagawa,
+		models.Kagoshima,
+		models.Kanagawa,
+		models.Kochi,
+		models.Kumamoto,
+		models.Kyoto,
+		models.Mie,
+		models.Miyagi,
+		models.Miyazaki,
+		models.Nagano,
+		models.Nagasaki,
+		models.Nara,
+		models.Niigata,
+		models.Oita,
+		models.Okayama,
+		models.Okinawa,
+		models.Osaka,
+		models.Saga,
+		models.Saitama,
+		models.Shiga,
+		models.Shimane,
+		models.Shizuoka,
+		models.Tochigi,
+		models.Tokushima,
+		models.Tokyo,
+		models.Tottori,
+		models.Toyama,
+		models.Wakayama,
+		models.Yamagata,
+		models.Yamaguchi,
+		models.Yamanashi,
+	}
+	rand.Seed(time.Now().Unix())
+
 	users := make([]models.User, 500)
 	for i, user := range users {
 		user.UserID = uuid.New().String()
+		// 0 から 2 個の都道府県
+		for n := 0; n <= rand.Intn(2); n++ {
+			prefecture := prefectures[rand.Intn(len(prefectures))]
+			user.Prefectures = append(user.Prefectures, prefecture)
+		}
+
 		// 0 から 5 個のお気に入り
 		for n := 0; n < rand.Intn(5); n++ {
 			item := items[rand.Intn(len(items))]
